@@ -24,6 +24,7 @@ If the changes made in your project don't reflect in your browser kindly:
 * Delete the ```/target``` directory
 * Run on the IntelliJ Terminal ```$ mvn clean install```
 
+## Projects
 To view the list of projects click on the link below:
 
 [List of Projects](https://github.com/anshgyl/academic-erp/blob/master/PROJECTS.md)
