@@ -22,8 +22,8 @@ public class StudentServiceImpl implements StudentService {
         
         String rollNumber = generateRollNumber(domain);
         student.setRollNumber(rollNumber);
-        
-        String photographPath = "images/" + rollNumber + "_" + fileDetail.getFileName();
+    
+        String photographPath = "images/student/" + rollNumber + "_" + fileDetail.getFileName();
         if (!fileService.upload(photograph, photographPath))
             System.out.println("File Upload Error!");
         else {
