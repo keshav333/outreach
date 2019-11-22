@@ -1,6 +1,6 @@
 var api = "webapi/domain";
 $.get(api, function (domain, status) {
-    if (status == 200) {
+    if (status == "success") {
         var domainOptions = "";
         for (var i = 0; i < domain.length; i++) {
             domainOptions += '<option value="' + domain[i].id + '">' + domain[i].discipline + ' ' + domain[i].branch + '</option>';
@@ -18,7 +18,7 @@ function previewFile() {
     reader.onloadend = function () {
         preview.src = reader.result;
         fileName.html(file.name);
-    }
+    };
 
     if (file) {
         reader.readAsDataURL(file); //reads the data as a URL
