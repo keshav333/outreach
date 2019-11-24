@@ -21,7 +21,13 @@ Update configurations in the following files:
 ## Initialising the Database
 You may initialise the Domain table using the following or similar query:
 ```
-INSERT INTO Domain(discipline, branch, code) VALUES ("M.Tech", "CS", "MTC"), ("M.Tech", "EC", "MTE"), ("iMTech", "CS", "IMTC"), ("iMTech", "EC", "IMTE"), ("MS", "CS", "MSC"), ("MS", "EC", "MSE");
+INSERT INTO Domain(discipline, branch, code) VALUES
+("M.Tech", "CS", "MTC"),
+("M.Tech", "EC", "MTE"),
+("iMTech", "CS", "IMTC"),
+("iMTech", "EC", "IMTE"),
+("MS", "CS", "MSC"),
+("MS", "EC", "MSE");
 ```
 
 ## Troubleshooting
