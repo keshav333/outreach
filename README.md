@@ -18,6 +18,12 @@ Update configurations in the following files:
 * Add the exploded war artifact to the deployment
 * Set the Application Context
 
+## Initialising the Database
+You may initialise the Domain table using the following or similar query:
+```
+INSERT INTO Domain(discipline, branch, code) VALUES ("M.Tech", "CS", "MTC"), ("M.Tech", "EC", "MTE"), ("iMTech", "CS", "IMTC"), ("iMTech", "EC", "IMTE"), ("MS", "CS", "MSC"), ("MS", "EC", "MSE");
+```
+
 ## Troubleshooting
 If the changes made in your project don't reflect in your browser kindly: 
 * Clear Browser Cache & Cookies
