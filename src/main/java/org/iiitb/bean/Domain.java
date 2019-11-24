@@ -1,6 +1,6 @@
 package org.iiitb.bean;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
@@ -24,7 +24,7 @@ public class Domain {
     @Column(unique = true)
     private String code; //MT, IMT
     
-    @JsonBackReference
+    @JsonIgnore
     @OneToMany(mappedBy = "domain")
     private Set<Student> students = new HashSet<>();
     

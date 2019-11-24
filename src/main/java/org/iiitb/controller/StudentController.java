@@ -6,12 +6,13 @@ import org.iiitb.bean.Student;
 import org.iiitb.service.StudentService;
 import org.iiitb.service.impl.StudentServiceImpl;
 
-import javax.ws.rs.Consumes;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 import java.io.InputStream;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.util.List;
 
 @Path("/student")
 public class StudentController {
@@ -20,13 +21,13 @@ public class StudentController {
     @POST
     @Consumes(MediaType.MULTIPART_FORM_DATA)
     @Produces(MediaType.TEXT_PLAIN)
-    public String addStudent(@FormDataParam("firstName") String firstName,
-                             @FormDataParam("middleName") String middleName,
-                             @FormDataParam("lastName") String lastName,
-                             @FormDataParam("emailId") String emailId,
-                             @FormDataParam("domainId") Integer domainId,
-                             @FormDataParam("photograph") InputStream photograph,
-                             @FormDataParam("photograph") FormDataContentDisposition fileDetail) {
+    public Response addStudent(@FormDataParam("firstName") String firstName,
+                               @FormDataParam("middleName") String middleName,
+                               @FormDataParam("lastName") String lastName,
+                               @FormDataParam("emailId") String emailId,
+                               @FormDataParam("domainId") Integer domainId,
+                               @FormDataParam("photograph") InputStream photograph,
+                               @FormDataParam("photograph") FormDataContentDisposition fileDetail) throws URISyntaxException {
         
         Student student = new Student();
         student.setFirstName(firstName);
@@ -35,8 +36,15 @@ public class StudentController {
         student.setEmailId(emailId);
         
         studentService.save(student, photograph, fileDetail, domainId);
-        return "Done";
+        return Response.seeOther(new URI("/academicerp/studentlist.html")).build();
     }
     
-    
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response showAllStudent() {
+        List<Student> studentList = studentService.findAll();
+        if (studentList == null)
+            return Response.noContent().build();
+        return Response.ok().entity(studentList).build();
+    }
 }

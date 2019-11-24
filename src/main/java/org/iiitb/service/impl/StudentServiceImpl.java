@@ -8,6 +8,7 @@ import org.iiitb.service.StudentService;
 import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 public class StudentServiceImpl implements StudentService {
     
@@ -40,6 +41,11 @@ public class StudentServiceImpl implements StudentService {
     @Override
     public Student findByRollNumber(String rollNumber) {
         return studentDao.findByRollNumber(rollNumber);
+    }
+    
+    @Override
+    public List<Student> findAll() {
+        return studentDao.findAll();
     }
     
     private String generateRollNumber(Domain domain) {

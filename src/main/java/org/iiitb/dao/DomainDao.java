@@ -53,8 +53,6 @@ public class DomainDao {
         
         List<Domain> domains = query.list();
         
-        domains.parallelStream().forEach((domain) -> domain.setStudents(null));
-        
         transaction.commit();
         session.close();
         

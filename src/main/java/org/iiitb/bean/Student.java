@@ -1,7 +1,5 @@
 package org.iiitb.bean;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 
@@ -26,7 +24,6 @@ public class Student {
     @NotBlank
     private String photograph;
     
-    @JsonManagedReference
     @ManyToOne
     private Domain domain = new Domain();
     

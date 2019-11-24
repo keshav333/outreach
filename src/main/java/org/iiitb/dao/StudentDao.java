@@ -7,6 +7,8 @@ import org.iiitb.bean.Domain;
 import org.iiitb.bean.Student;
 import org.iiitb.util.SessionUtil;
 
+import java.util.List;
+
 
 public class StudentDao {
     public void save(Student student) {
@@ -44,15 +46,31 @@ public class StudentDao {
         return student;
     }
     
-    public String getLastRollNumber(Domain domain) {
+    public List<Student> findAll() {
         Session session = SessionUtil.getSession();
         Transaction transaction = session.beginTransaction();
         
-        String hql = "SELECT s.rollNumber FROM Student s, Domain d WHERE s.domain = d AND d = :givenDomain ORDER BY s.rollNumber DESC";
+        String hql = "FROM Student";
+        Query query = session.createQuery(hql);
+        List<Student> studentList = query.list();
+        
+        transaction.commit();
+        session.close();
+        return studentList;
+    }
+    
+    public String getLastRollNumber(Domain domain) {
+        Session session = SessionUtil.getSession();
+        Transaction transaction = session.beginTransaction();
+    
+        String hql = "SELECT s.rollNumber FROM Student s WHERE s.domain = :givenDomain ORDER BY s.rollNumber DESC";
         Query query = session.createQuery(hql);
         query.setParameter("givenDomain", domain);
-        String rollNumber = (String) query.list().get(0);
-        
+        String rollNumber = null;
+    
+        if (!query.list().isEmpty())
+            rollNumber = (String) query.list().get(0);
+    
         transaction.commit();
         session.close();
         return rollNumber;

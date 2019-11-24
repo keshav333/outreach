@@ -7,6 +7,7 @@ import org.iiitb.service.impl.DomainServiceImpl;
 import org.iiitb.service.impl.FileServiceImpl;
 
 import java.io.InputStream;
+import java.util.List;
 
 public interface StudentService {
     
@@ -22,4 +23,6 @@ public interface StudentService {
     Student find(Integer id);
     
     Student findByRollNumber(String rollNumber);
+    
+    List<Student> findAll();
 }
