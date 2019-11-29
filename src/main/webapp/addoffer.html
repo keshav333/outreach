@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Admission Page">
+    <meta name="author" content="Ansh Goyal">
+
+    <title>Admission | IIITB</title>
+
+    <!-- jQuery -->
+    <script src="jquery/jquery.min.js"></script>
+    <script src="jquery/popper.min.js"></script>
+
+    <!-- Bootstrap core CSS -->
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap core JS -->
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- Custom Styles-->
+    <link href="css/admission.css" rel="stylesheet">
+
+    <!-- Custom Scripts -->
+    <script src="js/admission.js" type="text/javascript"></script>
+
+</head>
+
+<body>
+<div class="container">
+    <div class="auth-form-body">
+        <div class="text-center">
+            <img src="images/icons/logo.jpg" alt="IIIT-B Logo"><br>
+        </div>
+
+        <form class="form-signin" id="admission-form" action="webapi/offer/addoffer" method="post"
+              enctype="multipart/form-data">
+
+
+            <div class="form-label-group">
+                <input type="text" id="Organisation_name" name="Organisation_name" class="form-control"
+                       placeholder="Organisation_name" required>
+                <label for="Organisation_name">Organisation Name</label>
+            </div>
+
+            <div class="form-label-group">
+                <select id="specId" name="specId" class="form-control" required>
+                    <option value="0" selected disabled>Select Specialisation</option>
+                </select>
+            </div>
+
+            <div class="form-label-group">
+                <input type="text" id="Min_Grade" name="Min_Grade" class="form-control"
+                       placeholder="Min_Grade" required>
+                <label for="Min_Grade">Minimum Grade</label>
+            </div>
+
+            <div class="form-label-group">
+                <input type="text" id="Max_intake" name="Max_intake" class="form-control"
+                       placeholder="Max_intake" required>
+                <label for="Max_intake">Maximum Intake</label>
+            </div>
+
+            <div class="form-label-group">
+                <div id="temp">
+
+                </div>
+                <select id="domainId" name="domainId" class="form-control" required>
+                    <option value="0" selected disabled>Select Domain</option>
+                </select>
+            </div>
+
+            <button class="btn btn-primary btn-block mt-4" type="submit">Add Offer</button>
+        </form>
+    </div>
+</div>
+
+</body>
+</html>
